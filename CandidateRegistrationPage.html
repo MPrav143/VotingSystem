@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Registration</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Candidate Registration</h2>
+        <form id="candidateForm" action="register_candidate.php" method="POST">
+            <label for="name">Candidate Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="rollNo">Roll Number:</label>
+            <input type="text" id="rollNo" name="rollNo" required>
+
+            <label for="details">Details:</label>
+            <textarea id="details" name="details" rows="4" required></textarea>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("candidateForm").addEventListener("submit", function (e) {
+    const name = document.getElementById("name").value.trim();
+    const rollNo = document.getElementById("rollNo").value.trim();
+    const details = document.getElementById("details").value.trim();
+
+    if (!name || !rollNo || !details) {
+        e.preventDefault();
+        alert("All fields are required!");
+    } else if (rollNo.length !== 8) {
+        e.preventDefault();
+        alert("Roll Number must be 8 characters long.");
+    }
+});
+
+    </script>
+</body>
+</html>
